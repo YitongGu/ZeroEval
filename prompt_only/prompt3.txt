@@ -1,0 +1,29 @@
+This is a logic puzzle. There are 3 houses (numbered 1 on the left, 3 on the right). Each has a different person in them. They have different characteristics: 
+- Each person has a unique name: peter, eric, arnold 
+- People have different favorite sports: soccer, tennis, basketball 
+- People own different car models: tesla model 3, ford f150, toyota camry  
+
+1. The person who owns a Ford F-150 is the person who loves tennis. 
+2. Arnold is in the third house. 
+3. The person who owns a Toyota Camry is directly left of the person who owns a Ford F-150. 
+4. Eric is the person who owns a Toyota Camry. 
+5. The person who loves basketball is Eric. 
+6. The person who loves tennis and the person who loves soccer are next to each other.  Let's think step by step. Please first briefly talk about your reasoning and show your final solution by filling the blanks in the below table.  
+
+{'header': ['House', 'Name', 'Sports', 'Car'], 'rows': [['___', '___', '___', '___'], ['___', '___', '___', '___'], ['___', '___', '___', '___'], ['___', '___', '___', '___']]}
+
+Reasoning: 
+
+Step 1: First apply clue <Arnold is in the third house.> We know that The Name in house 3 is arnold. 
+
+Step 2: Then combine clues: <The person who loves tennis and the person who loves soccer are next to each other.> <The person who loves basketball is Eric.> Unique Values Rules and the fixed table structure. We know that The Name in house 1 is eric. The FavoriteSport in house 1 is basketball. The Name in house 2 is peter. 
+
+Step 3: Then apply clue <Eric is the person who owns a Toyota Camry.> We know that The CarModel in house 1 is toyota camry. 
+
+Step 4: Then apply clue <The person who owns a Toyota Camry is directly left of the person who owns a Ford F-150.> and Unique Values We know that The CarModel in house 2 is ford f150. The CarModel in house 3 is tesla model 3. 
+
+Step 5: Then apply clue <The person who owns a Ford F-150 is the person who loves tennis.> and Unique Values We know that The FavoriteSport in house 2 is tennis. The FavoriteSport in house 3 is soccer. The puzzle is solved.  
+
+Final solution: 
+
+{'header': ['House', 'Name', 'Sports', 'Car'], 'rows': [['1', 'Eric', 'basketball', 'Camry'], ['2', 'Peter', 'Tennis', 'Ford'], ['3', 'Arnold', 'Soccer', 'Tesla']]}

@@ -1,0 +1,30 @@
+There are 3 houses, numbered 1 to 3 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:
+ - Each person has a unique name: Peter, Eric, Arnold
+ - Each person has a favorite color: red, white, yellow
+ - Each mother is accompanied by their child: Fred, Meredith, Bella
+
+## Clues:
+1. Arnold is the person whose favorite color is red.
+2. The person's child is named Fred is somewhere to the left of Eric.
+3. The person whose favorite color is red is in the second house.
+4. The person's child is named Bella is in the first house.
+5. The person who loves white is the person's child is named Meredith.
+
+We write the above clues in MiniZinc language:
+enum Name = {Peter, Eric, Arnold};
+enum Color = {red, white, yellow};
+enum Child = {Fred, Meredith, Bella};
+set of int: House = 1..3;
+
+array[House] of var Name: name;
+array[House] of var Color: color;
+array[House] of var Child: child;
+
+constraint forall(i in House, j in House) (i != j -> name[i] != name[j]);
+constraint forall(i in House, j in House) (i != j -> color[i] != color[j]);
+constraint forall(i in House, j in House) (i != j -> child[i] != child[j]);
+constraint forall(i in House) (name[i] == Arnold -> color[i] == red);
+constraint forall(i in House) (child[i] == Fred -> (i < 3 /\ name[i+1] == Eric));
+constraint color[2] == red;
+constraint child[1] == Bella;
+constraint forall(i in House) (color[i] == white -> child[i] == Meredith);

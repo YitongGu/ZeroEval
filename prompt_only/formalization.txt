@@ -1,0 +1,7 @@
+Found_At: the tea drinker lives in House 3
+Not_At: the musician does not drink tea
+Same_House: the musician drinks tea
+Direct_Left/Right: the greenhouse is directly to the left/right of the white house
+Side_By_Side: the coffee drinker and the tea drinker are next to each other.
+Left/Right_Of: A is somewhere to the left/right of B
+One/Two_between: There is one/two houses between A and B.
